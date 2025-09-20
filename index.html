@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Override</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Arka plan gradient animasyonu */
+    body {
+      background: linear-gradient(270deg, #f3f4f6, #e0f2fe, #fef3c7, #f5d0fe);
+      background-size: 800% 800%;
+      animation: gradientBG 18s ease infinite;
+    }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    /* Fade-in animasyonu */
+    .fade-in {
+      opacity: 0;
+      transform: scale(0.97);
+      animation: fadeIn 0.6s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Sticker hover efekti */
+    .sticker {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .sticker:hover {
+      transform: scale(1.12);
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.6);
+    }
+
+    /* Buton efekti */
+    .btn {
+      transition: all 0.3s ease;
+    }
+    .btn:hover {
+      background: linear-gradient(to right, #2563eb, #9333ea);
+      transform: scale(1.07);
+    }
+  </style>
+</head>
+<body class="text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-500">
+
+  <!-- Navbar -->
+  <nav class="fixed w-full top-0 bg-black text-white flex justify-between items-center px-6 py-3 shadow-lg z-50">
+    <div class="font-extrabold text-xl tracking-wide">📖 System Override</div>
+    <div class="flex items-center gap-4">
+      <a href="#manga" class="hover:text-yellow-400">Manga</a>
+      <a href="#stickers" class="hover:text-yellow-400">Stickers</a>
+      <a href="#about" class="hover:text-yellow-400">Hakkında</a>
+      <button id="themeToggle" class="ml-4 p-2 rounded-full bg-gray-800 hover:bg-gray-700">
+        <i data-lucide="moon" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </nav>
+
+  <main class="flex flex-col items-center p-6 pt-24">
+    <!-- Kapak Görseli -->
+    <div class="w-full max-w-3xl mb-8 fade-in">
+      <img src="manga/cover.jpg" alt="Kapak" class="w-full rounded-3xl shadow-2xl border-4 border-white dark:border-gray-700">
+    </div>
+
+    <!-- Manga sayfa görüntüleme alanı -->
+    <section id="manga" class="w-full max-w-3xl bg-white dark:bg-gray-800 rounded-3xl shadow-2xl p-6 relative fade-in">
+      <!-- Sticker -->
+      <div class="absolute top-3 left-3 bg-yellow-400 text-black px-3 py-1 rounded-full text-sm font-bold shadow-md animate-bounce">
+        Yeni! 🌟
+      </div>
+
+      <img id="mangaPage" src="manga/1.jpg" alt="Manga Sayfası" class="w-full rounded-2xl shadow-lg fade-in">
+      
+      <div class="flex justify-between mt-6">
+        <button onclick="prevPage()" class="btn px-5 py-2 bg-gray-900 text-white rounded-xl shadow flex items-center gap-2">
+          <i data-lucide="arrow-left"></i> Önceki
+        </button>
+        <button onclick="nextPage()" class="btn px-5 py-2 bg-gray-900 text-white rounded-xl shadow flex items-center gap-2">
+          Sonraki <i data-lucide="arrow-right"></i>
+        </button>
+      </div>
+
+      <p class="text-center mt-4 font-semibold">Sayfa <span id="pageNum">1</span> / 6</p>
+    </section>
+
+<!-- Sticker Galerisi -->
+<section id="stickers" class="w-full max-w-3xl mt-12 fade-in">
+  <h2 class="text-2xl font-bold mb-6">🎨 Sticker Koleksiyonu</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+
+    <!-- Sticker kartı -->
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden group">
+      <img src="stickers/sticker1.jpg" alt="Sticker 1" class="sticker w-full">
+      <a href="stickers/sticker1.jpg" download="sticker1.jpg"
+         class="block w-full text-center bg-blue-600 text-white py-2 font-semibold hover:bg-blue-700 transition">
+        ⬇ İndir
+      </a>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden group">
+      <img src="stickers/sticker2.jpg" alt="Sticker 2" class="sticker w-full">
+      <a href="stickers/sticker2.jpg" download="sticker2.jpg"
+         class="block w-full text-center bg-blue-600 text-white py-2 font-semibold hover:bg-blue-700 transition">
+        ⬇ İndir
+      </a>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden group">
+      <img src="stickers/sticker3.jpg" alt="Sticker 3" class="sticker w-full">
+      <a href="stickers/sticker3.jpg" download="sticker3.jpg"
+         class="block w-full text-center bg-blue-600 text-white py-2 font-semibold hover:bg-blue-700 transition">
+        ⬇ İndir
+      </a>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden group">
+      <img src="stickers/sticker5.jpg" alt="Sticker 5" class="sticker w-full">
+      <a href="stickers/sticker5.jpg" download="sticker5.jpg"
+         class="block w-full text-center bg-blue-600 text-white py-2 font-semibold hover:bg-blue-700 transition">
+        ⬇ İndir
+      </a>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden group">
+      <img src="stickers/sticker6.jpg" alt="Sticker 6" class="sticker w-full">
+      <a href="stickers/sticker6.jpg" download="sticker6.jpg"
+         class="block w-full text-center bg-blue-600 text-white py-2 font-semibold hover:bg-blue-700 transition">
+        ⬇ İndir
+      </a>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden group">
+      <img src="stickers/sticker7.jpg" alt="Sticker 7" class="sticker w-full">
+      <a href="stickers/sticker7.jpg" download="sticker7.jpg"
+         class="block w-full text-center bg-blue-600 text-white py-2 font-semibold hover:bg-blue-700 transition">
+        ⬇ İndir
+      </a>
+    </div>
+
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden group">
+      <img src="stickers/sticker14.jpg" alt="Sticker 14" class="sticker w-full">
+      <a href="stickers/sticker14.jpg" download="sticker14.jpg"
+         class="block w-full text-center bg-blue-600 text-white py-2 font-semibold hover:bg-blue-700 transition">
+        ⬇ İndir
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- Footer -->
+  <footer id="about" class="text-center p-8 mt-16 bg-gray-100 dark:bg-gray-800 rounded-t-3xl shadow-inner">
+    <p class="mb-3">© 2025 System Override</p>
+    <div class="flex justify-center gap-6 text-gray-600 dark:text-gray-300">
+      <a href="https://github.com/yoskasss" class="hover:text-blue-500"><i data-lucide="github"></i></a>
+      <a href="https://tr.linkedin.com/in/enes-aksoy54" class="hover:text-pink-500"><i data-lucide="LinkedIn"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+
+    let currentPage = 1;
+    const totalPages = 6;
+
+    function updatePage() {
+      const mangaPage = document.getElementById("mangaPage");
+      mangaPage.classList.remove("fade-in");
+      void mangaPage.offsetWidth;
+      mangaPage.src = `manga/${currentPage}.jpg`;
+      mangaPage.classList.add("fade-in");
+      document.getElementById("pageNum").innerText = currentPage;
+    }
+
+    function nextPage() {
+      if (currentPage < totalPages) {
+        currentPage++;
+        updatePage();
+      }
+    }
+
+    function prevPage() {
+      if (currentPage > 1) {
+        currentPage--;
+        updatePage();
+      }
+    }
+
+    // Tema değiştirme
+    const themeToggle = document.getElementById("themeToggle");
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const icon = themeToggle.querySelector("i");
+      icon.setAttribute("data-lucide", document.body.classList.contains("dark") ? "sun" : "moon");
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
