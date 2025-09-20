@@ -8,5 +8,6 @@ Tamamen ai ile oluşturulmuş bir manga
 
 
 
+### Link https://yoskasss.github.io/System-Override/
 
-Link https://yoskasss.github.io/System-Override/
+<img width="432" height="592" alt="sticker7" src="https://github.com/user-attachments/assets/03c8679f-dc1b-4006-a3f7-94ea42409c4f" />
